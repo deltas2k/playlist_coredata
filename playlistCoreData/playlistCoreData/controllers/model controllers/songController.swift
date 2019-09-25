@@ -11,13 +11,13 @@ import CoreData
 
 class SongController {
     //create
-    func createSong(songName: String, artistName: String, to playlist: Playlist) {
+    static func createSong(songName: String, artistName: String, to playlist: Playlist) {
         Song(songName: songName, artistName: artistName, playlist: playlist)
         playlistController.shared.saveToPersistentStore()
     }
     
     //delete
-    func deleteSong(song: Song) {
+    static func deleteSong(song: Song) {
         CoreDataStack.context.delete(song)
         playlistController.shared.saveToPersistentStore()
     }

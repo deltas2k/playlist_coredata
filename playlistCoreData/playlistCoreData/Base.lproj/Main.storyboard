@@ -9,7 +9,7 @@
         <!--Playlist-->
         <scene sceneID="7K0-J9-tsm">
             <objects>
-                <tableViewController id="I7L-x4-DU6" sceneMemberID="viewController">
+                <tableViewController id="I7L-x4-DU6" customClass="ListTableViewController" customModule="playlistCoreData" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Epg-m6-bYq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,7 +35,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="wbV-5c-Dj1" detailTextLabel="dKl-Ec-uJi" style="IBUITableViewCellStyleValue1" id="OUn-q1-Grk">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="playlistCell" textLabel="wbV-5c-Dj1" detailTextLabel="dKl-Ec-uJi" style="IBUITableViewCellStyleValue1" id="OUn-q1-Grk">
                                 <rect key="frame" x="0.0" y="72" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OUn-q1-Grk" id="XfI-bK-W7r">
@@ -69,8 +69,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Playlist" id="2er-va-ux4">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="4YD-db-BZ9"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="4YD-db-BZ9">
+                            <connections>
+                                <action selector="addPlaylistButtonTapped:" destination="I7L-x4-DU6" id="Acl-Ep-vid"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="playlistNameTextField" destination="crp-is-nhk" id="mtl-zr-lwO"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmI-mO-1b5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -79,7 +86,7 @@
         <!--Songs-->
         <scene sceneID="wB1-Td-IiX">
             <objects>
-                <tableViewController id="iEA-2w-vWM" sceneMemberID="viewController">
+                <tableViewController id="iEA-2w-vWM" customClass="DetailTableViewController" customModule="playlistCoreData" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="YbN-Sv-QRz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,13 +98,18 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="FoC-e0-Os7">
                                     <rect key="frame" x="10" y="8" width="394" height="74"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6GM-yj-ia2">
+                                        <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6GM-yj-ia2">
                                             <rect key="frame" x="0.0" y="0.0" width="394" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i4n-5v-PaC">
-                                            <rect key="frame" x="0.0" y="40" width="394" height="34"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="41D-0a-Ue9">
+                                            <rect key="frame" x="0.0" y="40" width="394" height="28"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i4n-5v-PaC">
+                                            <rect key="frame" x="0.0" y="74" width="394" height="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
@@ -113,7 +125,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Mbs-by-Myw" detailTextLabel="Yas-wL-XGe" style="IBUITableViewCellStyleSubtitle" id="By3-0E-elP">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="songCell" textLabel="Mbs-by-Myw" detailTextLabel="Yas-wL-XGe" style="IBUITableViewCellStyleSubtitle" id="By3-0E-elP">
                                 <rect key="frame" x="0.0" y="118" width="414" height="55.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="By3-0E-elP" id="YGo-lb-Oiz">
@@ -144,8 +156,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Songs" id="rqX-Ji-GhE">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Tqx-eO-YRO"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Tqx-eO-YRO">
+                            <connections>
+                                <action selector="addSongButtonTapped:" destination="iEA-2w-vWM" id="S5C-Cb-CJa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="artistNameTextField" destination="41D-0a-Ue9" id="IcX-al-UT3"/>
+                        <outlet property="songTitleTextField" destination="6GM-yj-ia2" id="bxd-T5-4B9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P8g-XX-GNd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

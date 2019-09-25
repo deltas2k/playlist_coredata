@@ -70,11 +70,11 @@
 		343706B4233BCF2D007A818D /* playlistCoreData */ = {
 			isa = PBXGroup;
 			children = (
-				343706CC233BD013007A818D /* resources */,
+				343706BE233BCF2D007A818D /* playlistCoreData.xcdatamodeld */,
 				343706BB233BCF2D007A818D /* Main.storyboard */,
 				343706D1233BD314007A818D /* controllers */,
-				343706BE233BCF2D007A818D /* playlistCoreData.xcdatamodeld */,
 				343706D9233BDF57007A818D /* model */,
+				343706CC233BD013007A818D /* resources */,
 			);
 			path = playlistCoreData;
 			sourceTree = "<group>";
